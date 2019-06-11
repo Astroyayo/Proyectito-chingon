@@ -1,0 +1,35 @@
+CREATE DATABASE ng_Control;
+
+USE ng_Control;
+
+CREATE OR REPLACE TABLE users
+(
+    id INT
+(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR
+(50),
+    surname VARCHAR
+(50),
+    secondSurname VARCHAR
+(50),
+    telephone VARCHAR
+(50),
+    email VARCHAR
+(50),
+    password PASSWORD,
+    userType BYTE,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE TABLE userTypes
+(
+    id BYTE,
+    type VARCHAR
+(15)
+);
+
+CREATE USER '1234554321'@'%' IDENTIFIED BY 'qweRty789';
+GRANT USAGE ON *.* TO '1234554321'@'%';
+GRANT SELECT, DELETE, INSERT, UPDATE  ON 'ng_Control'.* TO '1234554321'@'%';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR '1234554321'@'%';
