@@ -1,11 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand">Debt Status</a>
-  </nav>
-
+  <div class=""><h2 style="color: white">Debt Status</h2></div>
+</nav>
 <div class="row">
     <div class="col-md-4 offset-md-4">
         <div class="card login">
-          <div class="card-header">
+          <div class="card-header text-primary">
             Welcome
           </div>
           <div class="card-body">
@@ -16,7 +15,7 @@
               <div class="form-group">
                 <input type="password" name="psw" placeholder="Password" class="form-control">
               </div>
-              <button class="btn btn-success btn-block">
+              <button class="btn btn-success btn-block" (click)='verification()'>
                 Login
               </button>
             </form>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+
+import { CrudService } from '../../services/crud.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private crud: CrudService) { }
 
   ngOnInit() {
+    this.crud.getuser().subscribe(
+      res => console.log(res),
+      err => console.log(err)
+      
+    );
   }
 
 }

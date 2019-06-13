@@ -16,14 +16,14 @@ CREATE OR REPLACE TABLE users
 (50),
     email VARCHAR
 (50),
-    password PASSWORD,
-    userType BYTE,
+    password VARCHAR (20),
+    userType int,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE OR REPLACE TABLE userTypes
 (
-    id BYTE,
+    id int,
     type VARCHAR
 (15)
 );
