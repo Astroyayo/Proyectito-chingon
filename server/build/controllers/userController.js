@@ -18,8 +18,8 @@ class UserController {
     }
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            database_1.default.query(`SELECT * FROM users WHERE telephone = '${req.params.telephone}'
-        AND password = PASSWORD('${req.params.password}')`);
+            database_1.default.query(`SELECT * FROM users WHERE telephone = '${req.body.telephone}'
+        AND password = PASSWORD('${req.body.password}')`);
         });
     }
 }

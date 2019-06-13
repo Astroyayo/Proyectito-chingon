@@ -9,8 +9,8 @@ class UserController {
     }
 
     public async login(req: Request, res: Response): Promise<void> {
-        db.query(`SELECT * FROM users WHERE telephone = '${req.params.telephone}'
-        AND password = PASSWORD('${req.params.password}')`);
+        db.query(`SELECT * FROM users WHERE telephone = '${req.body.telephone}'
+        AND password = PASSWORD('${req.body.password}')`);
     }
 
 }
