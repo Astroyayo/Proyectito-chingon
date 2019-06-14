@@ -1,4 +1,4 @@
 export interface User{
-    phone: string;
+    telephone: string;
     password: string;
 }

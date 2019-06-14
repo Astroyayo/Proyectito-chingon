@@ -8,12 +8,12 @@ import { User } from '../models/user';
 })
 export class CrudService {
 
-  API_URI = 'http://localhost:3000'; //DIRECCION DEL SERVIDOR
+  API_URI = 'http://localhost:3000/api/users'; //DIRECCION DEL SERVIDOR
 
   constructor(private http: HttpClient) { }
 
-  getlogin(user: User){
-    return this.http.get(`${this.API_URI}/login/${user}`);//DIRECCION DE USUARIOS
+  getlogin(user: any){
+    return this.http.get(`${this.API_URI}/login/`, user);//DIRECCION DE USUARIOS
   }
 
 }
