@@ -12,9 +12,9 @@ import { User } from 'src/app/models/user';
 export class LoginComponent implements OnInit {
 
   constructor(private crud: CrudService) { }
-  us: User ={
-    phone: '3121210322',
-    password: '123',
+  us: any ={
+    telephone: '',
+    password: '',
   }
   ngOnInit() {
     
