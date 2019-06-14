@@ -5,6 +5,7 @@ import { from } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
 import { CurrentUser } from 'src/app/models/currentUser';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,9 @@ import { CurrentUser } from 'src/app/models/currentUser';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private crud: CrudService) { }
+  constructor(
+    private crud: CrudService,
+    private router: Router) { }
   us: User ={
     telephone: '',
     password: '',
@@ -24,7 +27,6 @@ export class LoginComponent implements OnInit {
     
   }
   login(){
-    console.log(this.us)
     this.crud.getlogin(this.us).subscribe(
       res => {
         this.crud.currentUser = res;
@@ -32,7 +34,8 @@ export class LoginComponent implements OnInit {
           alert('Usuario o contraseña incorrectos!!!');
         }
         else{
-          window.location.href = './show'
+          this.router.navigateByUrl('/show');
+          //window.location.href = './show'
         }
       },
       err => console.log(err)      

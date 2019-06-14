@@ -8,7 +8,10 @@ import { CrudService } from '../../services/crud.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(crud: CrudService) { }
+  constructor(crud: CrudService) {
+    console.log(crud.currentUser.logged);
+    
+   }
 
   ngOnInit() {
   }

@@ -15,13 +15,19 @@ export class CrudService {
     logged: false
   }
 
+  private user: any;
+
   API_URI = 'http://localhost:3000/api/users'; //DIRECCION DEL SERVIDOR
 
   constructor(private http: HttpClient) { }
 
   getlogin(user: User): Observable<any>{
-    
-    return this.http.post(`${this.API_URI}/login/`, user);//DIRECCION DE USUARIOS}
+    this.user = this.http.post(`${this.API_URI}/login/`, user);//DIRECCION DE USUARIOS}
+    return this.user;
+  }
+
+  getSignedUser(): Observable<any> {
+    return this.user;
   }
 
 }
