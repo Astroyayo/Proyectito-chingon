@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 
 import { CrudService } from '../../services/crud.service';
 import { from } from 'rxjs';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,17 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   constructor(private crud: CrudService) { }
-
+  us: User ={
+    phone: '3121210322',
+    password: '123',
+  }
   ngOnInit() {
-    this.crud.getuser().subscribe(
+    
+  }
+  login(){
+    this.crud.getlogin(this.us).subscribe(
       res => console.log(res),
-      err => console.log(err)
-      
+      err => console.log(err)      
     );
   }
 
