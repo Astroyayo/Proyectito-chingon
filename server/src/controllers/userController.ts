@@ -19,12 +19,14 @@ class UserController {
             WHERE telephone = ? AND password = ?`
             , [req.body.telephone, req.body.password], (err, rows, fields) => {
 
-                console.log(rows)
+                console.log(req.body)
                 if (err) {
                     throw err;
                 }
                 if (rows.length == 0) {
-                    res.json(req.body)
+                    res.json({
+                        logged: false
+                    });
                 }
                 else {
 

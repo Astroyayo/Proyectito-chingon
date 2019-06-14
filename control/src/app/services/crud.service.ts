@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -12,8 +12,9 @@ export class CrudService {
 
   constructor(private http: HttpClient) { }
 
-  getlogin(user: any){
-    return this.http.get(`${this.API_URI}/login/`, user);//DIRECCION DE USUARIOS
+  getlogin(user: User): Observable<any>{
+    
+    return this.http.post(`${this.API_URI}/login/`, user);//DIRECCION DE USUARIOS}
   }
 
 }
