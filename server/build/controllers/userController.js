@@ -13,13 +13,77 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class UserController {
-    getPayments(req, res) {
-        res.end('hola mundo');
+    test(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('SELECT * FROM debts', (err, rows, fields) => {
+                res.json(rows);
+            });
+        });
     }
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            database_1.default.query(`SELECT * FROM users WHERE telephone = '${req.body.telephone}'
-        AND password = PASSWORD('${req.body.password}')`);
+            yield database_1.default.query(`
+            SELECT id, userType
+            FROM users 
+            WHERE telephone = ? AND password = ?`, [req.body.telephone, req.body.password], (err, rows, fields) => {
+                console.log(rows);
+                if (err) {
+                    throw err;
+                }
+                if (rows.length == 0) {
+                    res.json(req.body);
+                }
+                else {
+                    let admin;
+                    if (rows[0].userType == 2) {
+                        admin = false;
+                    }
+                    else {
+                        admin = true;
+                    }
+                    res.json({
+                        logged: true,
+                        admin: admin,
+                        id: rows[0].id
+                    });
+                }
+            });
+        });
+    }
+    SignUp(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('INSERT INTO users SET ?', [req.body], (err, rows, fields) => {
+                if (err) {
+                    throw err;
+                }
+                res.json({
+                    message: 'User created.'
+                });
+            });
+        });
+    }
+    registerPayment(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('INSERT INTO payments SET ?', [req.body], (err, rows, fields) => {
+                if (err) {
+                    throw err;
+                }
+                res.json({
+                    message: 'Payment registered.'
+                });
+            });
+        });
+    }
+    registerDebt(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('INSERT INTO debts SET ?', [req.body], (err, rows, fields) => {
+                if (err) {
+                    throw err;
+                }
+                res.json({
+                    message: 'Debt registeres.'
+                });
+            });
         });
     }
 }

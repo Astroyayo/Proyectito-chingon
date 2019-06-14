@@ -1,16 +1,20 @@
-import mysql from 'promise-mysql';
+
+import mysql from 'mysql';
+
+import { promisify } from 'util';
 
 import keys from './keys';
 
 const pool = mysql.createPool(keys.database);
 
-pool.getConnection()
-    .then(connection => {
-        pool.releaseConnection(connection);
+pool.getConnection((err, connection) => {
+    if (err) {
+        throw err;
+    }
+    else {
+        connection.release();
         console.log('DB is connected.');
-    },
-    error => {
-        console.error(error);
-    });
+    }
+})
 
 export default pool;

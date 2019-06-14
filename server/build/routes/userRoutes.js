@@ -8,7 +8,7 @@ class UserRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', userController_1.userController.getPayments);
+        this.router.get('/login', userController_1.userController.test);
     }
 }
 const userRoutes = new UserRoutes();

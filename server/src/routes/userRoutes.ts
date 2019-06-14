@@ -12,7 +12,7 @@ class UserRoutes {
     }
 
     private config(): void {
-        this.router.get('/', userController.getPayments);
+        this.router.get('/login', userController.test);
     }
 
 }
