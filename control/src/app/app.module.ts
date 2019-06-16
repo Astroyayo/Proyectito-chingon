@@ -1,35 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ComunicationComponent } from './components/comunication/comunication.component';
-import { AddUserComponent } from './component/add-user/add-user.component';
-import { AddPaymentComponent } from './component/add-payment/add-payment.component';
-import { AddChargeComponent } from './component/add-charge/add-charge.component';
 
-import {CrudService} from './services/crud.service';
-import { from } from 'rxjs';
+import { CrudService } from './services/crud.service';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AddChargeComponent } from './components/add-charge/add-charge.component';
+import { AddPaymentComponent } from './components/add-payment/add-payment.component';
+import { GeneralStatsComponent } from './components/general-stats/general-stats.component';
+import { ConsultsComponent } from './components/consults/consults.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    ComunicationComponent,
+    PageNotFoundComponent,
+    AdminViewComponent,
+    UserViewComponent,
     AddUserComponent,
+    AddChargeComponent,
     AddPaymentComponent,
-    AddChargeComponent
+    GeneralStatsComponent,
+    ConsultsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CrudService

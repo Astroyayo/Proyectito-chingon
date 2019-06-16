@@ -10,24 +10,51 @@ import { CurrentUser } from '../models/currentUser';
 export class CrudService {
 
   currentUser: CurrentUser = {
-    id: null,
-    admin: false,
-    logged: false
-  }
+    id: 2,
+    admin: true,
+    logged: true,
+    name: 'Ismael Meza'
+  };
 
-  private user: any;
-
-  API_URI = 'http://localhost:3000/api/users'; //DIRECCION DEL SERVIDOR
+  API_URI = 'http://localhost:3000/api/users'; // DIRECCION DEL SERVIDOR
 
   constructor(private http: HttpClient) { }
 
-  getlogin(user: User): Observable<any>{
-    this.user = this.http.post(`${this.API_URI}/login/`, user);//DIRECCION DE USUARIOS}
-    return this.user;
+  getlogin(user: User): Observable<any> {
+    return this.http.post(`${this.API_URI}/login/`, user); // DIRECCION DE USUARIOS}
   }
 
-  getSignedUser(): Observable<any> {
-    return this.user;
+  signUpUser(user) {
+    return this.http.post(`${this.API_URI}/registerUser`, user);
+  }
+
+  addPayment(data) {
+    console.log(data);
+    return this.http.post(`${this.API_URI}/addPayment`, data);
+  }
+
+  addCharge(data) {
+    return this.http.post(`${this.API_URI}/addDebt`, data);
+  }
+
+  debtsByDate(data) {
+    return this.http.post(`${this.API_URI}/debtsByDate/`, data);
+  }
+
+  debtsByUser(id, data) {
+    return this.http.post(`${this.API_URI}/debtsByUSer/${id}`, data);
+  }
+
+  totalDue(id, data) {
+    return this.http.post(`${this.API_URI}/totalDue/${id}`, data);
+  }
+
+  paymentsByUser(id, data) {
+    return this.http.post(`${this.API_URI}/paymentsByUser/${id}`, data);
+  }
+
+  getDebtors(data) {
+    return this.http.post(`${this.API_URI}/Debtors`, data);
   }
 
 }
